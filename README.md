@@ -10,6 +10,7 @@ Untuk menjalankan projeect ini, pastikan sudah menginstal PHP dan Database (RDBM
 git clone https://github.com/evanalifian/Jmk25.git <nama_project(optional)>
 composer update
 composer dump-autoload
+npm install
 ```
 
 ## Tech Stacks
