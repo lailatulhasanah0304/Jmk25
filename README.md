@@ -15,11 +15,11 @@ composer dump-autoload
 ## Tech Stacks
 
 1. Backend
-    - PHP (Native)
+   - PHP (Native)
 2. Frontend
-    - ...
+   - Tailwind
 3. Database
-    - MySQL
+   - MySQL
 
 ## Project Structure
 

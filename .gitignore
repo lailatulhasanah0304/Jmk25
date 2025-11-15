@@ -4,3 +4,9 @@ composer.phar
 
 # IDE and OS-specific files
 .vscode/
+
+node_modules/
+.pnp.*
+.pnpm-store/
+.cache/
+.env
