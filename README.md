@@ -59,7 +59,7 @@ npm install
 
 ## Tim Pengembang
 
-<table border="0" cellpadding="0" cellspacing="0">
+<table border="0" cellpadding="0" cellspacing="0" style="display: flex; justify-content: center; gap: 20px; text-align: center;">
   <tr>
     <td align="center" valign="top">
       <a href="https://github.com/evanalifian">
