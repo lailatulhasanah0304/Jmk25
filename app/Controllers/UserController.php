@@ -3,6 +3,9 @@
 namespace Jmk25\Controllers;
 
 use Jmk25\App\View;
+use Jmk25\Exception\ValidationException;
+use Jmk25\Models\UserModel;
+use Jmk25\Service\UserService;
 
 class UserController {
   public static function renderSignIn() {
@@ -17,5 +20,21 @@ class UserController {
       "title" => "Sign Up",
       "description" => "Bikin akun dulu gak sih broo!!"
     ]);
+  }
+
+  public function register() {
+    $username = trim(htmlspecialchars($_POST["username"]));
+    $password = trim(htmlspecialchars($_POST["password"]));
+
+    try {
+      UserService::validateRegister($username, $password);
+      UserModel::register($username, $password);
+      View::redirect("/user/signin");
+    } catch (ValidationException $err) {
+      View::render("/user/signup", [
+        "title" => "Register new account",
+        "err_msg" => $err->getMessage()
+      ]);
+    }
   }
 }
