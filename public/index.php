@@ -33,6 +33,7 @@ Router::add("GET", "/user/signin", UserController::class, "renderSignin", [IsAut
 // Landing page route
 Router::add("GET", "/", HomeController::class, "index");
 Router::add("GET", "/landing", HomeController::class, "landing");
+Router::add("GET", "/profile", HomeController::class, "profile");
 // Router::add("GET", "/", HomeController::class, "landing");
 // Router::add("GET", "/([0-9a-zA-Z]*)/id/([0-9a-zA-Z]*)", HomeController::class, "index");
 
