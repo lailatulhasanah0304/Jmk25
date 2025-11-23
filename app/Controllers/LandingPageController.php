@@ -14,7 +14,7 @@ class LandingPageController {
       "data" => $data
     ];
 
-    View::render("/home/index", $model);
+    View::render("landing_page", $model);
   }
 }
 
