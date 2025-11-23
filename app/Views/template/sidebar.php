@@ -1,5 +1,5 @@
 <nav id="sidebar-nav" class="fixed z-50 transition-all duration-300 bg-mainBg
-            -bottom-2 left-0 w-full h-16 px-4 flex flex-row justify-between items-center
+            -bottom-2 left-0 w-full h-16 flex flex-row justify-between items-center
             md:border-t-0 md:top-0 md:h-screen md:w-auto md:px-4 md:py-3 md:flex-col md:space-y-2">
 
   <a href="#" class="hidden md:block p-3 mb-2 opacity-80 hover:opacity-100 transition-opacity">
