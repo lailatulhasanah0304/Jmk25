@@ -48,58 +48,48 @@
 
           </div>
         </div>
+        <hr class="my-10">
 
-        <div class="flex w-full border-b border-mainGray mt-6">
-          <div
-            class="flex-1 py-3 flex justify-center items-center cursor-pointer border-b-2 border-mainText transition-colors hover:bg-mainGray/5">
-            <ion-icon name="cube-outline" class="text-xl text-mainText"></ion-icon>
-          </div>
-          <div
-            class="flex-1 py-3 flex justify-center items-center cursor-pointer transition-colors hover:bg-mainGray/5">
-            <ion-icon name="save-outline" class="text-xl text-mainGray"></ion-icon>
-          </div>
-        </div>
-      </div>
 
-      <div class="pb-20 flex flex-col">
+        <div class="pb-20 flex flex-col">
 
-        <?php $memes = $model['data']['memes'] ?? []; ?>
+          <?php $memes = $model['data']['memes'] ?? []; ?>
 
-        <?php if (!empty($memes)): ?>
-        <?php foreach ($memes as $meme): ?>
+          <?php if (!empty($memes)): ?>
+          <?php foreach ($memes as $meme): ?>
 
-        <div class="flex flex-col p-5 border-b border-mainGray hover:bg-mainGray/5 transition-colors">
+          <div class="flex flex-col p-5 border-b border-mainGray hover:bg-mainGray/5 transition-colors">
 
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-10 h-10 rounded-full bg-gray-300 overflow-hidden shrink-0">
-              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=<?= urlencode($meme['author']) ?>"
-                class="w-full h-full object-cover">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-10 h-10 rounded-full bg-gray-300 overflow-hidden shrink-0">
+                <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=<?= urlencode($meme['author']) ?>"
+                  class="w-full h-full object-cover">
+              </div>
+              <div class="flex flex-col leading-tight">
+                <p class="font-bold text-mainText text-sm"><?= htmlspecialchars($meme['author']) ?></p>
+                <p class="text-xs text-mainText/60">@<?= htmlspecialchars($meme['subreddit']) ?></p>
+              </div>
             </div>
-            <div class="flex flex-col leading-tight">
-              <p class="font-bold text-mainText text-sm"><?= htmlspecialchars($meme['author']) ?></p>
-              <p class="text-xs text-mainText/60">@<?= htmlspecialchars($meme['subreddit']) ?></p>
+
+            <p class="text-mainText text-[15px] mb-3"><?= htmlspecialchars($meme['title']) ?></p>
+
+            <div class="rounded-xl overflow-hidden border border-mainGray bg-black">
+              <img src="<?= htmlspecialchars($meme['url']) ?>" class="w-full h-auto max-h-[500px] object-contain">
             </div>
+
+            <div class="mt-3">
+              <?php require __DIR__ . '/../../partials/Interact.php'; ?>
+            </div>
+
           </div>
 
-          <p class="text-mainText text-[15px] mb-3"><?= htmlspecialchars($meme['title']) ?></p>
-
-          <div class="rounded-xl overflow-hidden border border-mainGray bg-black">
-            <img src="<?= htmlspecialchars($meme['url']) ?>" class="w-full h-auto max-h-[500px] object-contain">
-          </div>
-
-          <div class="mt-3">
-            <?php require __DIR__ . '/../../partials/Interact.php'; ?>
-          </div>
+          <?php endforeach; ?>
+          <?php else: ?>
+          <div class="py-20 text-center text-mainText/50">Belum ada meme.</div>
+          <?php endif; ?>
 
         </div>
 
-        <?php endforeach; ?>
-        <?php else: ?>
-        <div class="py-20 text-center text-mainText/50">Belum ada meme.</div>
-        <?php endif; ?>
-
       </div>
-
     </div>
-  </div>
 </main>
