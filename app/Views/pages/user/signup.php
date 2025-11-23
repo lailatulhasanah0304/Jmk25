@@ -14,7 +14,7 @@
       <div>
         <label for="username" class="block text-sm/6 font-medium text-mainText/80">Username</label>
         <div class="mt-2">
-          <input type="text" id="username" name="username" required
+          <input type="text" id="username" name="username"
             class="block w-full rounded-lg border-0 bg-secondBg px-4 py-3 text-mainText shadow-sm ring-1 ring-inset ring-mainGray/20 placeholder:text-mainText/30 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm/6 transition-all outline-none"
             placeholder="Pilih username kerenmu" />
         </div>
@@ -41,7 +41,7 @@
       <div>
         <label for="password" class="block text-sm/6 font-medium text-mainText/80">Password</label>
         <div class="mt-2">
-          <input id="password" type="password" name="password" required autocomplete="current-password"
+          <input id="password" type="password" name="password" autocomplete="current-password"
             class="block w-full rounded-lg border-0 bg-secondBg px-4 py-3 text-mainText shadow-sm ring-1 ring-inset ring-mainGray/20 placeholder:text-mainText/30 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm/6 transition-all outline-none"
             placeholder="••••••••" />
         </div>
@@ -61,5 +61,6 @@
         Sign in di sini
       </a>
     </p>
+    <?= $model["err_msg"] ? $model["err_msg"] : null ?>
   </div>
 </div>

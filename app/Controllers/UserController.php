@@ -3,11 +3,16 @@
 namespace Jmk25\Controllers;
 
 use Jmk25\App\View;
+use Jmk25\Config\Database;
 use Jmk25\Exception\ValidationException;
 use Jmk25\Models\UserModel;
 use Jmk25\Service\UserService;
 
 class UserController {
+  public static function conn() {
+    return Database::getConnectionDB();
+  }
+
   public static function renderSignIn() {
     View::render("/user/signin", [
       "title" => "Sign Up",
@@ -29,14 +34,51 @@ class UserController {
     $password = trim(htmlspecialchars($_POST["password"]));
 
     try {
+      UserModel::findUser($username);
       UserService::validateRegister($username, $password);
       UserModel::register($username, $password);
       View::redirect("/user/signin");
     } catch (ValidationException $err) {
-      View::render("/user/signup", [
+      View::render("user/signup", [
         "title" => "Register new account",
         "err_msg" => $err->getMessage()
       ]);
     }
+  }
+
+  public function login() {
+    $username = trim(htmlspecialchars($_POST["username"]));
+    $password = trim(htmlspecialchars($_POST["password"]));
+
+    try {
+      UserService::validateRegister($username, $password);
+
+      $statement = self::conn()->prepare("SELECT * FROM user WHERE username = ?");
+      $statement->execute([$username]);
+
+      $hash_password = "";
+      foreach ($statement as $s) {
+        $hash_password = $s["user_password"];
+      }
+      if (md5($password) != $hash_password) {
+        throw new ValidationException("Password salah");
+      } else {
+        session_start();
+        $_SESSION["login"] = true;
+        View::redirect("/");
+      }
+    } catch (ValidationException $err) {
+      View::render("user/signin", [
+        "title" => "Sign in",
+        "err_msg" => $err->getMessage()
+      ]);
+    }
+  }
+
+  public function logout() {
+    session_start();
+    session_destroy();
+    session_unset();
+    View::redirect("/user/signin");
   }
 }

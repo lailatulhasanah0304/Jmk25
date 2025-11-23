@@ -13,7 +13,7 @@ class View {
     require_once __DIR__ . "/../Views/template/footer.php";
   }
 
-  public static function redirect(string $path) {
+  public static function redirect(string $path, array $model = []): void {
     header("Location: $path");
     exit;
   }
